@@ -63,6 +63,14 @@ interests: {
 },
 
 
+languages: [
+  {
+    name: String,
+    level: String
+  }
+],
+
+
     certification: [
       {
         certificate_name: { type: String },

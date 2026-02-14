@@ -11,8 +11,8 @@ const ClassicTemplate = ({ data, accentColor }) => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-8 bg-white text-gray-800 leading-relaxed">
-            {/* Header */}
+      <div className="max-w-4xl mx-auto px-8 pt-5 pb-0 bg-white text-gray-800 leading-relaxed">
+
 <header
   className="mb-3 pb-3 border-b-2"
   style={{ borderColor: accentColor }}
@@ -137,7 +137,7 @@ const ClassicTemplate = ({ data, accentColor }) => {
             {data.experience && data.experience.length > 0 && (
                 <section className="mb-3">
                     <h2 className="text-xl font-semibold mb-1" style={{ color: accentColor }}>
-                        EXPERIENCE (Non Professional) :
+                        EXPERIENCE :
                     </h2>
 
                     <div className="space-y-1.5">
@@ -185,7 +185,7 @@ const ClassicTemplate = ({ data, accentColor }) => {
 
           {proj.description && (
             <span className="text-gray-600">
-              {" — "}
+              {" - "}
               {proj.description}
             </span>
           )}
@@ -255,15 +255,17 @@ const ClassicTemplate = ({ data, accentColor }) => {
         </div>
 
         {/* College + CGPA */}
-        <div className="mt-1">
-          <p className="text-gray-700">{edu.institution}</p>
+      {/* College + CGPA */}
+<div className="mt-1 space-y-1">
+  <p className="text-gray-700">{edu.institution}</p>
 
-          {edu.gpa && (
-            <p className="text-sm text-gray-600">
-              CGPA: {edu.gpa}
-            </p>
-          )}
-        </div>
+  {edu.gpa && (
+    <p className="text-sm text-gray-600">
+      CGPA: {edu.gpa}
+    </p>
+  )}
+</div>
+
 
       </div>
     ))}
@@ -276,79 +278,102 @@ const ClassicTemplate = ({ data, accentColor }) => {
 
             
 {/* INTERESTS */}
+{/* INTERESTS + LANGUAGES */}
 
 {(data.interests?.professional?.length > 0 ||
-  data.interests?.personal?.length > 0) && (
-  <section className="mb-3">
+  data.interests?.personal?.length > 0 ||
+  data.languages?.length > 0) && (
+  <section className="mb-0">
 
-    {/* Header Row (Aligned with Grid) */}
-    <div className="grid grid-cols-2 gap-3 items-start mb-1">
+    <div className="grid grid-cols-2 gap-6 items-start">
 
-      <h2
-        className="text-xl font-semibold"
-        style={{ color: accentColor }}
+      {/* LEFT SIDE → INTERESTS */}
+      <div>
+
+        <h2
+          className="text-xl font-semibold mb-1"
+          style={{ color: accentColor }}
+        >
+          INTERESTS :
+        </h2>
+
+        {data.interests?.professional?.map((interest, index) => (
+          <div key={index} className="text-sm text-gray-700 leading-snug">
+
+           <div className="leading-tight">
+  <span className="font-medium">
+    {interest.title}
+  </span>
+
+  {interest.website && (
+    <>
+      {" "}
+      <a
+        href={interest.website}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600"
       >
-        INTERESTS :
-      </h2>
-
-      {data.interests?.personal?.length > 0 && (
-        <h3 className="font-semibold text-gray-900">
-          Personal Interests :
-        </h3>
-      )}
-
-    </div>
-
-    {/* Content Grid */}
-    <div className="grid grid-cols-2 gap-3 items-start">
-
-      {/* Professional Interests */}
-      {data.interests?.professional?.length > 0 && (
-        <div>
-          {data.interests.professional.map((interest, index) => (
-<div key={index} className="text-gray-700 mb-3">
-
-  <div className="flex items-baseline">
-    <p className="font-medium">
-      {interest.title}
-    </p>
-
-    {interest.website && (
-      <p className="ml-1 text-sm text-blue-600 break-all">
         {interest.website}
-      </p>
-    )}
-  </div>
-
-  {interest.description && (
-    <p className="text-sm mt-1">
-      {interest.description}
-    </p>
+      </a>
+    </>
   )}
 
+  {interest.description && (
+    <span className="block mt-0.5">
+      {interest.description}
+    </span>
+  )}
 </div>
 
-          ))}
-        </div>
-      )}
 
-      {/* Personal Interests */}
-      {data.interests?.personal?.length > 0 && (
-        <div>
-          <div className="flex flex-wrap gap-2">
-            {data.interests.personal.map((item, index) => (
-              <span
-                key={index}
-                className="px-3 py-1 bg-gray-100 rounded-full text-sm"
-              >
-                {item}
+          </div>
+        ))}
+
+      </div>
+
+      {/* RIGHT SIDE → LANGUAGES + PERSONAL INTERESTS */}
+      <div>
+
+        {/* Languages Known */}
+        {data.languages?.length > 0 && (
+          <div className="mb-2 text-sm mt-0.5">
+<span
+  className="text-x font-semibold mb-1"
+  style={{ color: accentColor }}
+>
+  LANGUAGES :
+</span>
+
+{" "}
+            {data.languages.map((lang, index) => (
+              <span key={index}>
+                {lang.name}
+                {index !== data.languages.length - 1 && "  |  "}
               </span>
             ))}
           </div>
-        </div>
-      )}
+        )}
+
+        {/* Personal Interests */}
+        {data.interests?.personal?.length > 0 && (
+          <div className="text-sm">
+            <span className="block font-semibold">
+              Personal Interests :
+            </span>{" "}
+            {data.interests.personal.map((item, index) => (
+              <span key={index}>
+                {item}
+                {index !== data.interests.personal.length - 1 && ", "}
+              </span>
+            ))}
+          </div>
+        )}
+
+      </div>
 
     </div>
+
   </section>
 )}
 
