@@ -4,18 +4,20 @@ import { useState } from "react";
 const ColorPicker = ({ selectedColor, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const colors = [
-    { name: "Blue", value: "#3b82f6" },
-    { name: "Green", value: "#10b981" },
-    { name: "Red", value: "#ef4444" },
-    { name: "Purple", value: "#8b5cf6" },
-    { name: "Orange", value: "#f97316" },
-    { name: "Teal", value: "#14b8a6" },
-    { name: "Pink", value: "#ec4899" },
-    { name: "Yellow", value: "#facc15" },
-    { name: "Gray", value: "#6b7280" },
-    { name: "Black", value: "#1f2937" },
-  ];
+const colors = [
+  { name: "Blue", value: "#3b82f6" },
+  { name: "Deep Blue", value: "#1e3a8a" },   // ✅ Added
+  { name: "Green", value: "#10b981" },
+  { name: "Red", value: "#ef4444" },
+  { name: "Purple", value: "#8b5cf6" },
+  { name: "Orange", value: "#f97316" },
+  { name: "Teal", value: "#14b8a6" },
+  { name: "Pink", value: "#ec4899" },
+  { name: "Yellow", value: "#facc15" },
+  { name: "Gray", value: "#6b7280" },
+  { name: "Black", value: "#1f2937" },
+];
+
 
   return (
     <div className="relative">

@@ -162,23 +162,35 @@ const ClassicTemplate = ({ data, accentColor }) => {
                     </div>
                 </section>
             )}
-
 {/* Projects */}
 {data.project && data.project.length > 0 && (
   <section className="mb-3">
 
     <h2
-      className="text-xl font-semibold mb-1"
+      className="text-xl font-semibold flex items-center gap-2"
       style={{ color: accentColor }}
     >
       PROJECTS :
+
+      {data.projectsPageLink && (
+        <span className="text-sm font-normal text-black">
+          (Click here :
+          <a
+            href={data.projectsPageLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline ml-1"
+          >
+            Live Deployment Link
+          </a>
+          )
+        </span>
+      )}
     </h2>
 
-    <ul className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
-
+    <ul className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm mt-2">
       {data.project.map((proj, index) => (
         <li key={index} className="text-gray-800">
-
           <span className="font-semibold">
             {proj.name}
           </span>
@@ -189,13 +201,13 @@ const ClassicTemplate = ({ data, accentColor }) => {
               {proj.description}
             </span>
           )}
-
         </li>
       ))}
-
     </ul>
+
   </section>
 )}
+
 
 
             

@@ -44,7 +44,9 @@ const ResumeBuilder = () => {
     professional_summary: "",
     experience: [],
     education: [],
-    project: [],
+project: [],
+projectsPageLink: "",
+
     skill: [],
     languages: [],
 interests: {
@@ -301,17 +303,15 @@ setResumeData({
                     }
                   />
                 )}
-                {activeSection.id === "projects" && (
-                  <ProjectForm
-                    data={resumeData.project}
-                    onChange={(data) =>
-                      setResumeData((prev) => ({
-                        ...prev,
-                        project: data,
-                      }))
-                    }
-                  />
-                )}
+{activeSection.id === "projects" && (
+  <ProjectForm
+    data={resumeData}
+    onChange={(updatedData) =>
+      setResumeData(updatedData)
+    }
+  />
+)}
+
                 {activeSection.id === "skills" && (
                   <SkillsForm
                     data={resumeData.skills}

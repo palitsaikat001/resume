@@ -30,14 +30,17 @@ const ResumeSchema = new mongoose.Schema(
         is_current: { type: Boolean },
       },
     ],
-    project: [
-      {
-        name: { type: String },
-        type: { type: String },
-        description: { type: String },
-        link: { type: String },
-      },
-    ],
+project: [
+  {
+    name: { type: String },
+    type: { type: String },
+    description: { type: String },
+    link: { type: String },
+  },
+],
+
+projectsPageLink: { type: String },
+
 education: [
   {
     institution: { type: String },
