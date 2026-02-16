@@ -78,14 +78,26 @@ const ClassicTemplate = ({ data, accentColor }) => {
       </div>
 
 
-        {data.personal_info?.website && (
-          <div className="flex items-start gap-1 min-w-0">
-            <Globe className="size-4 mt-0.5 shrink-0" />
-            <span className="break-all leading-snug">
-              {data.personal_info.website}
-            </span>
-          </div>
-        )}
+{data.personal_info?.website && (
+  <div className="flex items-start gap-1 min-w-0">
+    <Globe className="size-4 mt-0.5 shrink-0" />
+    <span className="break-all leading-snug">
+      Portfolio:{" "}
+      <a
+        href={
+          data.personal_info.website.startsWith("http")
+            ? data.personal_info.website
+            : `https://${data.personal_info.website}`
+        }
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 hover:underline"
+      >
+        {data.personal_info.website}
+      </a>
+    </span>
+  </div>
+)}
 
 
       {/* Links */}
@@ -174,13 +186,17 @@ const ClassicTemplate = ({ data, accentColor }) => {
 
       {data.projectsPageLink && (
         <span className="text-sm font-normal text-black">
-          (Click here :
-          <a
-            href={data.projectsPageLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline ml-1"
-          >
+          (click here :
+ <a
+      href={
+        data.projectsPageLink.startsWith("http")
+          ? data.projectsPageLink
+          : `https://${data.projectsPageLink}`
+      }
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-blue-600 hover:underline ml-1"
+    >
             Live Deployment Link
           </a>
           )
@@ -321,11 +337,15 @@ const ClassicTemplate = ({ data, accentColor }) => {
     <>
       {" "}
       <a
-        href={interest.website}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-600"
-      >
+      href={
+        interest.website.startsWith("http")
+          ? interest.website
+          : `https://${interest.website}`
+      }
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-blue-600 hover:underline"
+    >
         {interest.website}
       </a>
     </>
